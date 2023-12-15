@@ -1,0 +1,32 @@
+---
+title: "quarto_presentation_test"
+---
+
+My name is Gabriel Hobro.
+
+I am a senior analytical manager at NHS England. This is my attempt at a Quarto website on GitHub as per Pablo Leon Rodenas's guidance.
+
+To learn more about Quarto websites visit <https://quarto.org/docs/websites>.
+
+```{r}
+#| include: false
+library(tidyverse)
+library(NHSRtheme)
+data(mtcars)
+```
+
+Let's "glimpse" at the data.
+
+```{r}
+glimpse(mtcars)
+```
+
+We will attempt to present miles per gallon (mpg) against weight (wt) for the cars in the data set.
+
+```{r}
+ggplot2::ggplot(mtcars, aes(x=mpg, y=wt)) +
+  geom_point() +
+  geom_smooth(method='lm', formula= y~x) +
+  ggtitle("mpg vs wt | mtcars data set") +
+  NHSRtheme::theme_nhs()
+```
